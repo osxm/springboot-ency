@@ -56,11 +56,11 @@ public class OracleConfig {
 	 @Bean(name = "entityManagerFactoryOracle")
 	 public LocalContainerEntityManagerFactoryBean entityManagerFactoryOralce(EntityManagerFactoryBuilder builder) {
 	  return builder
-	    .dataSource(oracleDataSource)
+	    .dataSource(oracleDataSource).packages("com.osxm.springbootency.com.entity.oracle").persistenceUnit("oraclePersistenceUnit").build();
 	    //.properties(jpaProperties.getProperties())
 	    //.packages("xxxx") //设置实体类所在位置
-	    .persistenceUnit("oraclePersistenceUnit")
-	    .build();
+	    //.persistenceUnit("oraclePersistenceUnit")
+	    //.build();
 	 }
 	 
 	 @Bean(name = "entityManagerOracle")

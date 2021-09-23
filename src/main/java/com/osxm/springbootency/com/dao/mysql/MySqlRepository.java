@@ -9,9 +9,15 @@
 */
 package com.osxm.springbootency.com.dao.mysql;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
 
-import com.osxm.springbootency.com.entity.Usr;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
+
+import com.osxm.springbootency.com.entity.mysql.Usr;
+
+
 
 /**
  * @ClassName MySqlDao
@@ -20,6 +26,9 @@ import com.osxm.springbootency.com.entity.Usr;
  * @date 2021年9月22日
  * 
  */
-public interface MySqlDao extends JpaRepository<Usr,Integer>{
+@Repository
+public interface MySqlRepository extends JpaRepository<Usr,Integer>{
 
+	@Query(value = "SELECT p FROM USR p")
+    List<Usr> queryList();
 }

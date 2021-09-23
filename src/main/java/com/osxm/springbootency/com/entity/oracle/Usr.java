@@ -22,7 +22,7 @@ import javax.persistence.Id;
  * @date 2021年9月22日
  * 
  */
-@Entity(name="usr")
+@Entity(name="USR")
 public class Usr {
 
 	@Id

@@ -1,8 +1,11 @@
 create database sb;
 use sb;
 
-create table usr
+CREATE TABLE USR
 (
- id int(10) NOT NULL AUTO_INCREMENT COMMENT '主键',
- name varchar(30) NOT NULL COMMENT '姓名'
-)ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8
+ id INT NOT NULL AUTO_INCREMENT COMMENT '主键',
+ name varchar(30) NOT NULL COMMENT '姓名',
+ PRIMARY KEY (id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+insert into USR(NAME) values('MySQL User');
