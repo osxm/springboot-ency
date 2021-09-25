@@ -35,7 +35,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  */
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages = "com.osxm.springbootency.com.dao.mysql", entityManagerFactoryRef = "entityManagerFactoryMySql", transactionManagerRef = "transactionManagerMySql")
+@EnableJpaRepositories(basePackages = "com.osxm.springbootency.com.dao.mysql",
+entityManagerFactoryRef = "entityManagerFactoryMySql",
+transactionManagerRef = "transactionManagerMySql")
 public class MySqlConfig {
 
 	@Autowired
@@ -58,10 +60,9 @@ public class MySqlConfig {
 	@Bean(name = "entityManagerFactoryMySql")
 	public LocalContainerEntityManagerFactoryBean entityManagerFactoryMySql(EntityManagerFactoryBuilder builder) {
 		return builder.dataSource(mySqlDataSource)
-				//.properties(getVendorProperties())
-				.packages("com.osxm.springbootency.com.entity.mysql").persistenceUnit("mySqlPersistenceUnit").build();
-		//
-		//
+				// .properties(getVendorProperties())
+				.packages("com.osxm.springbootency.com.entity.mysql").
+				persistenceUnit("mySqlPersistenceUnit").build();
 	}
 
 	@Primary
@@ -70,8 +71,8 @@ public class MySqlConfig {
 		return new JpaTransactionManager(entityManagerFactoryMySql(builder).getObject());
 	}
 
-	private Map<String, Object> getVendorProperties() {
+	/*private Map<String, Object> getVendorProperties() {
 		return hibernateProperties.determineHibernateProperties(jpaProperties.getProperties(), new HibernateSettings());
-	}
+	}*/
 
 }

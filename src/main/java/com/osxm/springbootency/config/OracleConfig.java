@@ -37,7 +37,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
   basePackages="com.osxm.springbootency.com.dao.oracle",
   entityManagerFactoryRef = "entityManagerFactoryOracle",
   transactionManagerRef = "transactionManagerOracle"
- //, basePackages = {"xx"}
   ) 
 public class OracleConfig {
 	
