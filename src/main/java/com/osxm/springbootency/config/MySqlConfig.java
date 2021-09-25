@@ -57,7 +57,8 @@ public class MySqlConfig {
 	@Primary
 	@Bean(name = "entityManagerFactoryMySql")
 	public LocalContainerEntityManagerFactoryBean entityManagerFactoryMySql(EntityManagerFactoryBuilder builder) {
-		return builder.dataSource(mySqlDataSource).properties(getVendorProperties())
+		return builder.dataSource(mySqlDataSource)
+				//.properties(getVendorProperties())
 				.packages("com.osxm.springbootency.com.entity.mysql").persistenceUnit("mySqlPersistenceUnit").build();
 		//
 		//

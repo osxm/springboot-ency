@@ -9,8 +9,6 @@
 */
 package com.osxm.springbootency.config;
 
-import java.util.Map;
-
 import javax.persistence.EntityManager;
 import javax.sql.DataSource;
 

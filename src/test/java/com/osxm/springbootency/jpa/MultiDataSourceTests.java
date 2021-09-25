@@ -36,7 +36,13 @@ public class MultiDataSourceTests {
 	@Test
 	public void mysqlQuery() {
 		String result = mysqlDao.queryList().toString();
-		System.out.print(result);
+		System.out.println(result);
+	}
+
+	@Test
+	public void oracleQuery() {
+		String result = oracleDao.queryList().toString();
+		System.out.println(result);
 	}
 
 }
