@@ -60,7 +60,7 @@ public class MySqlConfig {
 	@Bean(name = "entityManagerFactoryMySql")
 	public LocalContainerEntityManagerFactoryBean entityManagerFactoryMySql(EntityManagerFactoryBuilder builder) {
 		return builder.dataSource(mySqlDataSource)
-				// .properties(getVendorProperties())
+				.properties(getVendorProperties())
 				.packages("com.osxm.springbootency.com.entity.mysql").
 				persistenceUnit("mySqlPersistenceUnit").build();
 	}
@@ -71,8 +71,8 @@ public class MySqlConfig {
 		return new JpaTransactionManager(entityManagerFactoryMySql(builder).getObject());
 	}
 
-	/*private Map<String, Object> getVendorProperties() {
+	private Map<String, Object> getVendorProperties() {
 		return hibernateProperties.determineHibernateProperties(jpaProperties.getProperties(), new HibernateSettings());
-	}*/
+	}
 
 }
