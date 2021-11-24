@@ -16,6 +16,7 @@ import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Profile;
 
 /**
  * @ClassName DataSourceConfiguration
@@ -24,6 +25,7 @@ import org.springframework.context.annotation.Primary;
  * @date 2021年9月19日
  * 
  */
+@Profile("withdb")
 @Configuration
 public class DataSourceConfiguration {
 	

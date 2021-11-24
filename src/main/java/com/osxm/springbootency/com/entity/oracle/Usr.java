@@ -15,6 +15,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.springframework.context.annotation.Profile;
+
 /**
  * @ClassName Usr
  * @Description TODO
@@ -22,7 +24,8 @@ import javax.persistence.Id;
  * @date 2021年9月22日
  * 
  */
-@Entity(name="USR")
+@Profile("withdb")
+@Entity(name="USR2")
 public class Usr {
 
 	@Id
