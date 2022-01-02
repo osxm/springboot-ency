@@ -8,7 +8,6 @@
  */
 package com.osxm.springbootency.jpa;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -22,6 +21,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.osxm.springbootency.com.entity.KingDom;
 import com.osxm.springbootency.com.entity.Usr;
 
 /**
@@ -36,7 +36,7 @@ public class JpaCriteriaTests {
 	@Autowired
 	private EntityManager entityManager;
 
-	@Test
+	//@Test
 	public void appendQuery() {
 		String sId = "1";
 		String hql = "from Usr n where id="+sId;
@@ -50,7 +50,7 @@ public class JpaCriteriaTests {
 		//Assertions.assertEquals(usrList.get(0).getName(), "刘备");
 	}
 	
-	@Test
+	//@Test
 	public void setParameter() {
 	    String hql = "from Usr n where n.id=:id";
 		//String hql = "from Usr n";
@@ -65,7 +65,7 @@ public class JpaCriteriaTests {
 		
 	}
 	
-	@Test 
+	//@Test 
 	public void cretiriaQuery() {
 		//1. 通过实体管理器构造条件构造器
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
@@ -80,5 +80,46 @@ public class JpaCriteriaTests {
 		//5. 使用构造的条件查询对象查询
 		List<Usr> usrList = entityManager.createQuery(criteriaQuery).getResultList();
 		Assertions.assertEquals(usrList.get(0).getName(), "刘备");
+		//Assertions.assertEquals(usrList.get(0).getKingDom().getName(), "蜀");
 	}
+	
+	//@Test
+	public void cretiriaQuery2() {
+		//1. 通过实体管理器构造条件构造器
+		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+		//2. 通过条件构造器构造条件查询对象
+		CriteriaQuery<KingDom> criteriaQuery = criteriaBuilder.createQuery(KingDom.class);
+		//3. 条件查询对象从哪查询， 相对于 from 子句
+		Root<KingDom> root = criteriaQuery.from(KingDom.class);
+	    //4. 查询条件的列表 ， 也就是where 子句后面的条件
+		//Predicate  predicate = criteriaBuilder.equal(root.get("id"),1);
+		//criteriaQuery.where(predicate); 
+		//criteriaQuery.select(root); //查询结果， 相对于 select *
+		//5. 使用构造的条件查询对象查询
+		List<KingDom> kingDomList = entityManager.createQuery(criteriaQuery).getResultList();
+		Assertions.assertEquals(kingDomList.get(0).getName(), "蜀");
+		//Assertions.assertEquals(usrList.get(0).getKingdom().getName(), "蜀");
+	}
+	
+	@Test
+	public void queryUsrInMysql() {
+		//1. 通过实体管理器构造条件构造器
+		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+		//2. 通过条件构造器构造条件查询对象
+		CriteriaQuery<Usr> criteriaQuery = criteriaBuilder.createQuery(Usr.class);
+		//3. 条件查询对象从哪查询， 相对于 from 子句
+		Root<Usr> root = criteriaQuery.from(Usr.class);
+	    //4. 查询条件的列表 ， 也就是where 子句后面的条件
+		Predicate  predicate = criteriaBuilder.equal(root.get("id"),1);
+		criteriaQuery.where(predicate); 
+		criteriaQuery.select(root); //查询结果， 相对于 select *
+		//5. 使用构造的条件查询对象查询
+		List<Usr> usrList = entityManager.createQuery(criteriaQuery).getResultList();
+		System.out.println(usrList.size());
+		Assertions.assertEquals(usrList.get(0).getName(), "刘备");
+		//Assertions.assertEquals(usrList.get(0).getKingDom().getName(), "蜀");
+	}
+	
+	
+	
 }

@@ -24,11 +24,11 @@ import org.springframework.context.annotation.Profile;
  * @date 2021年9月22日
  * 
  */
-@Profile("withdb")
-@Entity(name="USR2")
+//@Profile("withdb")
+//@Entity(name="USR2")
 public class Usr {
 
-	@Id
+	/*@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="ID")
 	private Integer id;
@@ -54,5 +54,5 @@ public class Usr {
 	@Override
 	public String toString() {
 		return "id="+id+",name="+name;
-	}
+	}*/
 }

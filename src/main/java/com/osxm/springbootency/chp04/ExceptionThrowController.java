@@ -38,7 +38,7 @@ public class ExceptionThrowController {
 		
 		ModelAndView mv = new ModelAndView("usrinfo");
 		Usr usr = new Usr("刘备");
-		usr.setPhone("13800000001");
+		//usr.setPhone("13800000001");
 		mv.addObject("usr", usr);
 		exceptionDemoService.throwSbModelViewException();
 		return mv;

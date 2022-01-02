@@ -53,6 +53,7 @@ public class OracleConfig {
 
 	 
 	 @Bean(name = "entityManagerFactoryOracle")
+	 @Profile("withdb")
 	 public LocalContainerEntityManagerFactoryBean entityManagerFactoryOralce(EntityManagerFactoryBuilder builder) {
 	  return builder
 	    .dataSource(oracleDataSource).packages("com.osxm.springbootency.com.entity.oracle").persistenceUnit("oraclePersistenceUnit").build();

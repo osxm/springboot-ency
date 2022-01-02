@@ -2,18 +2,16 @@ package com.osxm.springbootency.com.entity.mysql;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import org.springframework.context.annotation.Profile;
 
-@Profile("withdb")
-@Entity(name="USR")
+@Profile({"withdb"})
+//@Entity(name="USR")
 public class Usr {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="ID")
 	private Integer id;
 	
