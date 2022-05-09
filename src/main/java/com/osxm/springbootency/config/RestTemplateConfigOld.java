@@ -38,7 +38,7 @@ import org.springframework.web.client.RestTemplate;
 
 
 //@Configuration
-public class RestTemplateConfig {
+public class RestTemplateConfigOld {
 	
 	//@Bean(name = "httpsRestTemplate")
     public RestTemplate httpsRestTemplate(HttpComponentsClientHttpRequestFactory httpsFactory){

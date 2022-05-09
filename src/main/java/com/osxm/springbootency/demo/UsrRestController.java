@@ -6,7 +6,7 @@
  * @date 2021年6月15日
  * @version V1.0
  */
-package com.osxm.springbootency.ceshi;
+package com.osxm.springbootency.demo;
 
 import javax.persistence.EntityManager;
 
@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.osxm.springbootency.com.entity.Usr;
 
@@ -22,7 +23,7 @@ import com.osxm.springbootency.com.entity.Usr;
   * @Description: TODO
   * @author oscarchen
   */
-//@RestController
+@RestController
 @RequestMapping("/ceshi/users")
 public class UsrRestController {
 	
