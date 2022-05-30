@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Cross Domain Demo</title>
+<!-- 跨域禁止访问演示  -->
+<script>
+	var url = 'http://localhost:8080/demo/output';
+
+	var xmlhttp;
+	if (window.XMLHttpRequest) {
+		//  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+		xmlhttp = new XMLHttpRequest();
+	} else {
+		// IE6, IE5 浏览器执行代码
+		xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	}
+
+	function xmlhttpAjaxCall() {
+		xmlhttp.onreadystatechange = function() {
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				alert(xmlhttp.responseText);
+			}
+		}
+		xmlhttp.open("GET", url, true);
+		xmlhttp.send();
+	}
+</script>
+<!-- 1. 基本跨域访问  -->
+<script>
+	function myCallBackFunc(param) {
+		alert(param);
+	}
+</script>
+<!--<script type="text/javascript" src="http://localhost:8080/demo/output"></script>-->
+
+<!-- 2. JQuery实现跨域访问  -->
+<script type="text/javascript"
+	src="http://code.jquery.com/jquery-1.8.0.min.js"></script>
+<script type="text/javascript">
+	function jqueryAjaxCall() {
+		$.ajax({
+			type : "GET",
+			async : false,
+			url : "http://localhost:8080/demo/output",
+			dataType : "jsonp",
+			//jsonp : "callback",//服务端用于接收callback调用的function名的参数 , 默认callback
+			success : function(data) {
+				alert(data["mystatus"]); 
+			},
+			error : function() {
+				alert('fail');
+			}
+		});
+	}
+</script>
+
+
+</head>
+<body>
+	<button type="button" onclick="xmlhttpAjaxCall()">Ajax原生方式</button>
+	<button type="button" onclick="jqueryAjaxCall()">JQuery 跨域访问</button>
+</body>
+</html>
