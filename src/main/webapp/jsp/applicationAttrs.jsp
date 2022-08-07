@@ -7,6 +7,7 @@
 <title>UTF-8</title>
 <%
   String appName = application.getAttribute("appName").toString();
+  request.getParameter(name)
 %>
 </head>
 <body>
