@@ -18,6 +18,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.osxm.springbootency.com.vo.UsrVo;
+
+
+
 @RestController
 @CrossOrigin(origins = "*", methods = {RequestMethod.GET,RequestMethod.POST,RequestMethod.OPTIONS,RequestMethod.PUT})
 public class ParamController {
@@ -27,6 +31,15 @@ public class ParamController {
 	public Map<String,String> urlParam(@RequestParam String param1){
 		Map<String,String> map = new HashMap<String,String>();
 		String msg = "传递的参数 param1="+param1;
+		map.put("msg",msg);
+		return map; 
+	}
+	
+	
+	@RequestMapping(value="/params/useparams",produces="application/json")
+	public Map<String,String> useParams(UsrVo user){
+		Map<String,String> map = new HashMap<String,String>();
+		String msg = "传递的参数,自动装配 user="+user.toString();
 		map.put("msg",msg);
 		return map; 
 	}
