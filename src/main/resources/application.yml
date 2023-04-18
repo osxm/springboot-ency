@@ -2,3 +2,11 @@
 #  profiles:
 #    default: "none" #default: "none"
   
+spring:
+  data:
+    redis:
+      host: "localhost"
+      port: 6379
+      database: 0
+      username: "user"
+      password: "secret"
