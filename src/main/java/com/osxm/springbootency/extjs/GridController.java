@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.osxm.springbootency.com.entity.Usr;
 
 @RestController
-@RequestMapping("/grid")
+@RequestMapping("/extjs/grid")
 public class GridController {
 
 	@GetMapping(value = "/users", produces = "application/json")

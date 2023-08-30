@@ -9,13 +9,27 @@
 */
 package com.osxm.springbootency.com.vo;
 
+import java.util.List;
+
 public class UsrVo {
 	private int id;
 	
 	private String name;
 	
+	private List<String> course;
 	
-    public int getId() {
+	
+    public List<String> getCourse() {
+		return course;
+	}
+
+
+	public void setCourse(List<String> course) {
+		this.course = course;
+	}
+
+
+	public int getId() {
 		return id;
 	}
 
