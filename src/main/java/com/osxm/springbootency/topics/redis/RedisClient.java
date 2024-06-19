@@ -9,19 +9,18 @@
 */
 package com.osxm.springbootency.topics.redis;
 
-import org.springframework.data.redis.core.StringRedisTemplate;
-import org.springframework.stereotype.Component;
-
-@Component
+// import org.springframework.data.redis.core.StringRedisTemplate;
+// import org.springframework.stereotype.Component;
+//@Component
 public class RedisClient {
 
-	private final StringRedisTemplate stringRedisTemplate;
+	// private final StringRedisTemplate stringRedisTemplate;
 	
-	public RedisClient(StringRedisTemplate stringRedisTemplate) {
-		this.stringRedisTemplate = stringRedisTemplate;
-	}
+	// public RedisClient(StringRedisTemplate stringRedisTemplate) {
+	// 	this.stringRedisTemplate = stringRedisTemplate;
+	// }
 	
-	public String get(String key) {
-		return stringRedisTemplate.opsForValue().get(key); 
-	}
+	// public String get(String key) {
+	// 	return stringRedisTemplate.opsForValue().get(key); 
+	// }
 }

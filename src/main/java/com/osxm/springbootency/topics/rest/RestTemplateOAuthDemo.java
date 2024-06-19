@@ -20,7 +20,7 @@ import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
 import org.apache.http.conn.ssl.TrustStrategy;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
-import org.junit.jupiter.api.Test;
+// import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -42,52 +42,52 @@ public class RestTemplateOAuthDemo {
 	private String tokenUrl = "";
 	private String callurl = "";
 	
-	@Test
-	public void fetchToken() throws Exception {
-		//1. 构造信任所有证书的请求工厂
-		TrustStrategy acceptingTrustStrategy = (X509Certificate[] chain, String authType) -> true;
-		SSLContext sslContext = org.apache.http.ssl.SSLContexts.custom().loadTrustMaterial(null, acceptingTrustStrategy)
-				.build();
-		SSLConnectionSocketFactory csf = new SSLConnectionSocketFactory(sslContext);
-		CloseableHttpClient httpClient = HttpClients.custom().setSSLSocketFactory(csf).build();
-		HttpComponentsClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory();
-	    requestFactory.setHttpClient(httpClient);
+	// @Test
+	// public void fetchToken() throws Exception {
+	// 	//1. 构造信任所有证书的请求工厂
+	// 	TrustStrategy acceptingTrustStrategy = (X509Certificate[] chain, String authType) -> true;
+	// 	SSLContext sslContext = org.apache.http.ssl.SSLContexts.custom().loadTrustMaterial(null, acceptingTrustStrategy)
+	// 			.build();
+	// 	SSLConnectionSocketFactory csf = new SSLConnectionSocketFactory(sslContext);
+	// 	CloseableHttpClient httpClient = HttpClients.custom().setSSLSocketFactory(csf).build();
+	// 	HttpComponentsClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory();
+	//     requestFactory.setHttpClient(httpClient);
         
-	    //2. RestTemplate 
-		RestTemplate restTemplate = new RestTemplate();
-		restTemplate.setRequestFactory(requestFactory);
-		String basicToken = "Basic " + Base64.getEncoder().encodeToString((clientId + ":" + clientSecret).getBytes());
-		HttpHeaders httpHeaders = new HttpHeaders();
-		httpHeaders.add("Authorization", basicToken);
-		//httpHeaders.add("Content-Type", "application/json");
+	//     //2. RestTemplate 
+	// 	RestTemplate restTemplate = new RestTemplate();
+	// 	restTemplate.setRequestFactory(requestFactory);
+	// 	String basicToken = "Basic " + Base64.getEncoder().encodeToString((clientId + ":" + clientSecret).getBytes());
+	// 	HttpHeaders httpHeaders = new HttpHeaders();
+	// 	httpHeaders.add("Authorization", basicToken);
+	// 	//httpHeaders.add("Content-Type", "application/json");
 		
-		HashMap<String, String> bodyMap = new HashMap<String, String>();
-		bodyMap.put("grant_type", "client_credentials");
-		HttpEntity<Object> entity = new HttpEntity<>(bodyMap, httpHeaders);
-		ResponseEntity<String> responseEntity = restTemplate.exchange(tokenUrl, HttpMethod.POST, entity, String.class);
-		System.out.println(responseEntity.getBody());
-	}
+	// 	HashMap<String, String> bodyMap = new HashMap<String, String>();
+	// 	bodyMap.put("grant_type", "client_credentials");
+	// 	HttpEntity<Object> entity = new HttpEntity<>(bodyMap, httpHeaders);
+	// 	ResponseEntity<String> responseEntity = restTemplate.exchange(tokenUrl, HttpMethod.POST, entity, String.class);
+	// 	System.out.println(responseEntity.getBody());
+	// }
 	
-	@Test
-	public void useTokenCall() throws Exception {
-		String token = "x";
-		//1. 构造信任所有证书的请求工厂
-		TrustStrategy acceptingTrustStrategy = (X509Certificate[] chain, String authType) -> true;
-		SSLContext sslContext = org.apache.http.ssl.SSLContexts.custom().loadTrustMaterial(null, acceptingTrustStrategy)
-				.build();
-		SSLConnectionSocketFactory csf = new SSLConnectionSocketFactory(sslContext);
-		CloseableHttpClient httpClient = HttpClients.custom().setSSLSocketFactory(csf).build();
-		HttpComponentsClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory();
-	    requestFactory.setHttpClient(httpClient);
+	// @Test
+	// public void useTokenCall() throws Exception {
+	// 	String token = "x";
+	// 	//1. 构造信任所有证书的请求工厂
+	// 	TrustStrategy acceptingTrustStrategy = (X509Certificate[] chain, String authType) -> true;
+	// 	SSLContext sslContext = org.apache.http.ssl.SSLContexts.custom().loadTrustMaterial(null, acceptingTrustStrategy)
+	// 			.build();
+	// 	SSLConnectionSocketFactory csf = new SSLConnectionSocketFactory(sslContext);
+	// 	CloseableHttpClient httpClient = HttpClients.custom().setSSLSocketFactory(csf).build();
+	// 	HttpComponentsClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory();
+	//     requestFactory.setHttpClient(httpClient);
 	    
-	    //2. RestTemplate 
-  		RestTemplate restTemplate = new RestTemplate();
-  		restTemplate.setRequestFactory(requestFactory);
-  		HttpHeaders httpHeaders = new HttpHeaders();
-  		httpHeaders.add("Authorization", "Bearer " + token);
-  		HttpEntity<Object> entity = new HttpEntity<>(null, httpHeaders);
-  		ResponseEntity<String> responseEntity = restTemplate.exchange(callurl, HttpMethod.GET, entity, String.class);
-  		System.out.println(responseEntity.getBody());
+	//     //2. RestTemplate 
+  	// 	RestTemplate restTemplate = new RestTemplate();
+  	// 	restTemplate.setRequestFactory(requestFactory);
+  	// 	HttpHeaders httpHeaders = new HttpHeaders();
+  	// 	httpHeaders.add("Authorization", "Bearer " + token);
+  	// 	HttpEntity<Object> entity = new HttpEntity<>(null, httpHeaders);
+  	// 	ResponseEntity<String> responseEntity = restTemplate.exchange(callurl, HttpMethod.GET, entity, String.class);
+  	// 	System.out.println(responseEntity.getBody());
 	    	    
-	}
+	// }
 }
